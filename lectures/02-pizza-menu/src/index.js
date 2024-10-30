@@ -72,6 +72,18 @@ function Menu() {
   );
 }
 function Footer() {
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 24;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  console.log(isOpen);
+
+  //   alert(
+  //     hour >= openHour && hour <= closeHour
+  //       ? "We are currently open!"
+  //       : "Sorry we're closed"
+  //   );
+
   return (
     <footer>{new Date().toLocaleDateString()}. We're currently open!</footer>
   );

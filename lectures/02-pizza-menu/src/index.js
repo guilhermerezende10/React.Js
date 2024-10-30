@@ -69,24 +69,23 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our menu</h2>
-      <Pizza
-        name="Pizza Salamino"
-        ingredients="Tomato, mozarella, and pepperoni"
-        photoName="pizzas/salamino.jpg"
-        price={30}
-      />
+      <Pizza pizzaData={pizzaData} />
     </main>
   );
 }
 
 function Pizza(props) {
+  const i = 4;
   return (
     <div className="pizza">
-      <img src={props.photoName} alt={props.name}></img>
+      <img
+        src={props.pizzaData[i].photoName}
+        alt={props.pizzaData[i].name}
+      ></img>
       <div>
-        <h3>{props.name}</h3>
-        <p>{props.ingredients}</p>
-        <span>{props.price}</span>
+        <h3>{props.pizzaData[i].name}</h3>
+        <p>{props.pizzaData[i].ingredients}</p>
+        <span>{props.pizzaData[i].price}</span>
       </div>
     </div>
   );

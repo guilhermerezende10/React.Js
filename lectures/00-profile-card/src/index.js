@@ -29,7 +29,7 @@ function Intro() {
       <h1>Guilherme Rezende</h1>
       <p>
         Front-end web developer student at Etec. Passionated by programming and
-        a chess lover. I like to hear to musics while read books or when
+        a chess lover. I like to hear to musics while reading books or when
         studing. I'm from Brazil🙋
       </p>
     </div>

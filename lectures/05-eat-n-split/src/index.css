@@ -70,7 +70,7 @@ body {
 
 .selected,
 .sidebar li:hover {
-  background-color: var(--color-lightest);
+  background-color: var(--color-light);
 }
 
 .sidebar li img {

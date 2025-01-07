@@ -47,19 +47,25 @@ import { useEffect, useState } from "react";
 //   },
 // ];
 
+const average = (arr) =>
+  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+
+
 const KEY = "b2fd4650";
 
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
   const query = "avengers"
 
   useEffect(function() {
     async function fetchMovies() {
+      setIsLoading(true)
       const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`)
       const data = await res.json()
       setMovies(data.Search);
-      console.log(data.Search)
+      setIsLoading(false)
     }
     fetchMovies()
   }, [])
@@ -74,7 +80,7 @@ export default function App() {
       </NavBar>
       <Main>
         <Box movies={movies}>
-          <MovieList movies={movies} />
+          {isLoading ? <Loader /> : <MovieList movies={movies} />}
         </Box>
 
         <Box>
@@ -86,8 +92,9 @@ export default function App() {
   );
 }
 
-const average = (arr) =>
-  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+function Loader() {
+  return <p className="loader">Loading...</p>
+}
 
 function NavBar({ children }) {
   return <nav className="nav-bar">{children}</nav>;

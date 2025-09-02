@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { formatCurrency } from "../../utils/helpers";
-import { useMutation } from "@tanstack/react-query";
-import { deleteCabin } from "../../services/apiCabins";
-import { useDeleteCabin } from "./useDeleteCabin";
 import { useState } from "react";
+
 import CreateCabinForm from "./CreateCabinForm";
+
+import { formatCurrency } from "../../utils/helpers";
+import { useDeleteCabin } from "./useDeleteCabin";
 
 const TableRow = styled.div`
   display: grid;
@@ -61,11 +61,11 @@ function CabinRow({ cabin }) {
   return (
     <>
       <TableRow role="row">
-        <Img src={image} alt="" />
+        <Img src={image} />
         <Cabin>{name}</Cabin>
         <div>Fits up to {maxCapacity} guests</div>
         <Price>{formatCurrency(regularPrice)}</Price>
-        <Discount>{formatCurrency(discount)}</Discount>
+        {discount ? <Discount>{formatCurrency(discount)}</Discount> : <span>&mdash;</span>}
         <div>
           <button onClick={() => setShowForm(() => !showForm)}>Edit</button>
           <button onClick={() => deleteCabin(cabinId)} disabled={isDeleting}>
@@ -74,7 +74,7 @@ function CabinRow({ cabin }) {
         </div>
       </TableRow>
 
-      {showForm && <CreateCabinForm cabinToEdit={cabin}/>}
+      {showForm && <CreateCabinForm cabinToEdit={cabin} />}
     </>
   );
 }

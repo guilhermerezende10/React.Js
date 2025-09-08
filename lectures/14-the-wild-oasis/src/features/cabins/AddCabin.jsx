@@ -1,4 +1,3 @@
-import { useState } from "react";
 import CreateCabinForm from "./CreateCabinForm";
 import Button from "../../ui/Button";
 import Modal from "../../ui/Modal";
@@ -22,20 +21,16 @@ import Modal from "../../ui/Modal";
 
 function AddCabin() {
   return (
-    <Modal>
-      <Modal.Open opens="cabinForm">
-        <Button>Add new cabin</Button>
-      </Modal.Open>
-      <Modal.Window name="cabinForm">
-        <CreateCabinForm />
-      </Modal.Window>
-      <Modal.Open opens="table">
-        <Button>Show table</Button>
-      </Modal.Open>
-      <Modal.Window name="table">
-        <CreateCabinForm />
-      </Modal.Window>
-    </Modal>
+    <div>
+      <Modal>
+        <Modal.Open opens="cabinForm">
+          <Button>Add new cabin</Button>
+        </Modal.Open>
+        <Modal.Window name="cabinForm">
+          <CreateCabinForm />
+        </Modal.Window>
+      </Modal>
+    </div>
   );
 }
 

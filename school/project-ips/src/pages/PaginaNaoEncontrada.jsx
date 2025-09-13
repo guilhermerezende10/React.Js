@@ -1,8 +1,11 @@
+import Title from "../ui/Title";
+
+
 function PaginaNaoEncontrada() {
     return (
-        <div>
+        <Title>
             Página Não Encontrada
-        </div>
+        </Title>
     )
 }
 

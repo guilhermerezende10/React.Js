@@ -1,0 +1,6 @@
+.btn {
+  background-color: inherit;
+  border: none;
+  color: var(--color-blue-700);
+  cursor: pointer;
+}

@@ -3,27 +3,27 @@ import styles from "./MainNav.module.css";
 
 function MainNav() {
   return (
-    <nav>
-      <ul className="navlist">
-        <li className={styles.navlink}>
-          <NavLink to="/home">
-            Home
+    <nav className={styles.mainNav}>
+      <ul className={styles.navList}>
+        <li>
+          <NavLink to="/home" className={styles.navLink}>
+            <span>Home</span>
           </NavLink>
         </li>
-        <li className={styles.navlink}>
-          <NavLink to="/uso-aceitavel">
+        <li>
+          <NavLink to="/uso-aceitavel" className={styles.navLink}>
             <span>Uso Aceitável</span>
           </NavLink>
         </li>
 
-        <li className={styles.navlink}>
-          <NavLink to="/seguranca-fisica-ambiental">
+        <li>
+          <NavLink to="/seguranca-fisica-ambiental" className={styles.navLink}>
             <span>Segurança Física e Ambiental</span>
           </NavLink>
         </li>
 
-        <li className={styles.navlink}>
-          <NavLink to="/backup-recuperacao">
+        <li>
+          <NavLink to="/backup-recuperacao" className={styles.navLink}>
             <span>Backup e Recuperação</span>
           </NavLink>
         </li>

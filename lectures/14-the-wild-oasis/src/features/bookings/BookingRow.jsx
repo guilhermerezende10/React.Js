@@ -34,8 +34,8 @@ const Amount = styled.div`
   font-weight: 500;
 `;
 
-function BookingRow({
-  booking: {
+function BookingRow({ booking }) {
+  const {
     id: bookingId,
     created_at,
     startDate,
@@ -44,10 +44,14 @@ function BookingRow({
     numGuests,
     totalPrice,
     status,
-    guests: { fullName: guestName, email },
-    cabins: { name: cabinName },
-  },
-}) {
+    guests,
+    cabins,
+  } = booking;
+
+  const guestName = guests?.fullName ?? "Unknown guest";
+  const email = guests?.email ?? "—";
+  const cabinName = cabins?.name ?? "—";
+
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",
@@ -76,11 +80,14 @@ function BookingRow({
         </span>
       </Stacked>
 
-      <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
+      <Tag type={statusToTagName[status]}>
+        {status.replace("-", " ")}
+      </Tag>
 
       <Amount>{formatCurrency(totalPrice)}</Amount>
     </Table.Row>
   );
 }
+
 
 export default BookingRow;

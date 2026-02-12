@@ -72,25 +72,31 @@ function Pagination({ count }) {
     searchParams.set("page", next);
     setSearchParams(searchParams);
   }
-  function previousPage() {
+  function prevPage() {
     const prev = currentPage === 1 ? currentPage : currentPage - 1;
 
     searchParams.set("page", prev);
     setSearchParams(searchParams);
   }
 
+  if (pageCount <= 1) return null;
+
   return (
     <StyledPagination>
       <P>
-        Showing <span>1</span> to <span>10</span> of <span>{count}</span>{" "}
-        results
+        Showing <span>{(currentPage - 1) * PAGE_SIZE + 1}</span> to{" "}
+        <span>{Math.min(currentPage * PAGE_SIZE, count)}</span> of{" "}
+        <span>{count}</span> results
       </P>
       <Buttons>
-        <PaginationButton onClick={previousPage}>
+        <PaginationButton onClick={prevPage} disabled={currentPage === 1}>
           <HiChevronLeft />
           <span>Previous</span>
         </PaginationButton>
-        <PaginationButton onClick={nextPage}>
+        <PaginationButton
+          onClick={nextPage}
+          disabled={currentPage === pageCount}
+        >
           <span>Next</span>
           <HiChevronRight />
         </PaginationButton>
